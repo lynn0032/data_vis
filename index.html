@@ -63,16 +63,16 @@
 
       var geoGenerator = d3.geoPath().projection(projection);
 
-      d3.select('svg').append("g").attr("transform", "scale(8,8) translate(67,-19)".selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
+      d3.select('svg').append("g").attr("transform", "scale(8,8) translate(-67,19)".selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
 
         
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-        d3.select('svg').append("g").attr("transform", "translate(480*8, 250*8)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return (8*8.0*parseFloat(d.Longitude))/3.0;}).attr("cy",function(d){return (8*-25.0*parseFloat(d.Latitude))/9.0;}).attr("r", 1);
+        d3.select('svg').append("g").attr("transform", "translate(480, 250)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return (8*8.0*parseFloat(d.Longitude))/3.0;}).attr("cy",function(d){return (8*-25.0*parseFloat(d.Latitude))/9.0;}).attr("r", 1);
       }
     
     </script>
   </body>
   <p>
-    Hi.
+    Hi!
   </p>
 </html>
