@@ -63,7 +63,7 @@
 
       var geoGenerator = d3.geoPath().projection(projection);
 
-      d3.select('svg').append("g").attr("transform", "scale(2,2) translate(67,19)").selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
+      d3.select('svg').append("g").attr("transform", "scale(8,8) translate(67,19)").selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
 
         
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
@@ -73,6 +73,6 @@
     </script>
   </body>
   <p>
-    Hi.
+    Hi!
   </p>
 </html>
