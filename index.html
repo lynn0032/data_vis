@@ -1,11 +1,14 @@
 <html>
   <script src = 'https://d3js.org/d3.v5.min.js'>
   </script>
+  <svg width = 300 height = 350>
+  </svg>
   <body onload = 'init()'>
     <script>
       async function init(){
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-        d3.select('body').selectAll('p').data(data).enter().append('p').html(function(d,i) {return 'County ID ' + d.countyFIPS + ' has population ' + d.population + '.';});
+        d3.select('svg').selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return d.Longitude;}).attr("cy",function(d){return d.Latitude;}).attr("r", 10);
+        d3.select('svg').selectAll('p').data(data).enter().append('p').html(function(d,i) {return 'County ID ' + d.countyFIPS + ' has population ' + d.population + '.';});
       }
     </script>
   </body>
