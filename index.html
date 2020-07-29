@@ -7,9 +7,10 @@
   
   <body onload = 'init()'>
     <script>
-     function draw_US(world) {
-      d3.select("svg").append("g").selectAll("path").data(topojson.feature(world, world.objects.land).features).enter().append("path").attr("d", d3.geoPath().projection(d3.geo.equirectangular()));
-
+     function draw_US(err, world) {
+       if (err) throw err
+       d3.select("svg").append("g").selectAll("path").data(geojson.feature(world, world.objects.land).features).enter().append("path").attr("d", d3.geoPath().projection(d3.geo.equirectangular()));
+ 
       d3.select("svg").append("path").datum(d3.geoGraticule().outline).attr("class", "foreground").attr("d", d3.geoPath().projection(d3.geo.equirectangular()));
      }
             
@@ -22,6 +23,6 @@
     </script>
   </body>
   <p>
-    :(
+    ;)
   </p>
 </html>
