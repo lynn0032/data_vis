@@ -18,20 +18,17 @@
         .datum(d3.geoGraticule().outline)
         .attr("class", "foreground")
         .attr("d", d3.geoPath().projection(d3.geo.equirectangular()));
+     }
             
       async function init(){
         d3.json("https://raw.githubusercontent.com/lynn0032/data_vis/master/gz_2010_us_040_00_5m.json", draw_US)
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
         d3.select('svg').append("g").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 10*(parseFloat(d.Longitude)+160);}).attr("cy",function(d){return -10*(parseFloat(d.Latitude)-70);}).attr("r", 1);
-
-
-    }
+      }
     
-
- }
     </script>
   </body>
   <p>
-    Hi!
+    :)
   </p>
 </html>
