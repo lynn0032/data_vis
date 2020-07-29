@@ -3,15 +3,8 @@
   
   <body onload = 'init()'>
     <script>
-     function draw_US(err, world) {
-       if (err) throw err
-       d3.select("svg").append("g").selectAll("path").data(geojson.feature(world, world.objects.land).features).enter().append("path").attr("d", d3.geoPath().projection(d3.geo.equirectangular()));
- 
-      d3.select("svg").append("path").datum(d3.geoGraticule().outline).attr("class", "foreground").attr("d", d3.geoPath().projection(d3.geo.equirectangular()));
-     }
             
       async function init(){
-        svg.append("path").datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b)).attr("fill", "none").attr("stroke", "black").attr("stroke-linejoin", "round").attr("d", path);
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
         d3.select('svg').append("g").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 10*(parseFloat(d.Longitude)+160);}).attr("cy",function(d){return -10*(parseFloat(d.Latitude)-70);}).attr("r", 1);
       }
@@ -19,6 +12,6 @@
     </script>
   </body>
   <p>
-    ;(
+    ;)
   </p>
 </html>
