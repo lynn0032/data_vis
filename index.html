@@ -5,7 +5,7 @@
     <script>
       async function init(){
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-        d3.select('body').selectAll('p').data(data).enter().append('p').html(function(d,i) {return 'item' + d.County_Name + ' is ' + d.population + '.';});
+        d3.select('body').selectAll('p').data(data).enter().append('p').html(function(d,i) {return 'County ID ' + d.countyFIPS + ' has population ' + d.population + '.';});
       }
     </script>
   </body>
