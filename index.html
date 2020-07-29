@@ -7,7 +7,8 @@
     <script>
       async function init(){
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-        d3.select('svg').append("g").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return -5*(parseFloat(d.Longitude)+67);}).attr("cy",function(d){return 5*(parseFloat(d.Latitude)-19);}).attr("r", 1);
+        d3.select('svg').append("g").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return -50*(parseFloat(d.Longitude)+67);}).attr("cy",function(d){return 5*(parseFloat(d.Latitude)-19);}).attr("r", 1);
+        d3.select('body').selectAll('p').data(data).enter().append('p').html(function(d){return parseFloat(d.longitude);});
       }
     </script>
   </body>
