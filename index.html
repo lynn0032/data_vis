@@ -59,11 +59,11 @@
 {"type":"Feature","id":"56","properties":{"name":"Wyoming","density":5.851},"geometry":{"type":"Polygon","coordinates":[[[-109.080842,45.002073],[-105.91517,45.002073],[-104.058488,44.996596],[-104.053011,43.002989],[-104.053011,41.003906],[-105.728954,40.998429],[-107.919731,41.003906],[-109.04798,40.998429],[-111.047063,40.998429],[-111.047063,42.000709],[-111.047063,44.476286],[-111.05254,45.002073],[-109.080842,45.002073]]]}},
 ]};
 
-      var projection = d3.geoEquirectangular();
+      var projection = d3.geoEquirectangular().translate([0,0]).scale([1600,1600]);
 
       var geoGenerator = d3.geoPath().projection(projection);
 
-      d3.select('svg').append("g").attr("transform", "scale(16,16) translate(67,19)").selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
+      d3.select('svg').append("g").attr("transform", "translate(2000, 800)").selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
 
         
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
@@ -73,6 +73,6 @@
     </script>
   </body>
   <p>
-    Hi.
+    Hi!
   </p>
 </html>
