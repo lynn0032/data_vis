@@ -69,7 +69,13 @@
       }
 	    
       function format_points(){
-	points.attr("r", function(d){return Math.sqrt(1000*d[date]/d.population);}).style("fill-opacity", ".5");
+	points.attr("r", function(d){return Math.sqrt(1000*d[date]/d.population);});
+	if (choice == "cases"){
+		points.style("fill", "red");
+	}
+	if (choice == "deaths"){
+		points.style("fill", "blue");
+	}
 	}
 	    
       async function init(){
@@ -82,6 +88,6 @@
     </script>
   </body>
   <p>
-    Meowzers, weee!?
+    Meowzers, red!
   </p>
 </html>
