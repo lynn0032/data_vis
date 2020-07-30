@@ -68,16 +68,20 @@
 	      
       }
 	    
+      function format_points(){
+	points.attr("r", function(d){return Math.sqrt(1000*d[date]/d.population);}).style("fill-opacity", ".5");
+	}
+	    
       async function init(){
 	draw_map();
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -640)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));});
-        points.attr("r", function(d){return Math.sqrt(1000*d['2020-07-27 00:00:00']/d.population);}).style("fill-opacity", ".5");
+	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -640)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".25");
+        format_points();
       }
     
     </script>
   </body>
   <p>
-    Meowzers, weee!
+    Meowzers, weee!?
   </p>
 </html>
