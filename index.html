@@ -119,7 +119,7 @@
 	}
 	if (choice == "deathrate"){
 		var death_date = current_date += 'd';
-		points.attr("r", function(d){return Math.sqrt(200*d[death_date]/d[current_date]);});
+		points.attr("r", function(d){if (d[current_date] == 0){return 0;} return Math.sqrt(50*d[death_date]/d[current_date]);});
 		points.style("fill", "orange").style("fill-opacity", ".75");
 		return;
 	}
@@ -173,6 +173,6 @@
     </script>
   </body>
   <p>
-    Meowzers, deathrate!
+    Meowzers, scaled!
   </p>
 </html>
