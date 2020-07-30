@@ -68,20 +68,16 @@
 	d3.select('svg').append("g").attr("transform", "translate(-880, -700) scale(6,6)").selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
 	      
       }
-	
-	function format_points(selection){
-		d3.select('svg').selectAll("g").selectAll('cicle')
-	}
 	    
       async function init(){
 	draw_map();
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-        points.attr("r", function(d){return Math.sqrt(1000*d['2020-07-27 00:00:00']/d.population);}).style("fill-opacity", ".5");
+        d3.select('svg').append("g").attr("transform", "translate(2000, -640)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).attr("r", function(d){return Math.sqrt(1000*d['2020-07-27 00:00:00']/d.population);}).style("fill-opacity", ".5");
       }
     
     </script>
   </body>
   <p>
-    Meowzers, weee!
+    Meowzers, weee?
   </p>
 </html>
