@@ -66,7 +66,7 @@
       function draw_map(){
 	var projection = d3.geoEquirectangular();
 	var geoGenerator = d3.geoPath().projection(projection);
-	d3.select('svg').append("g").attr("transform", "translate(-880, -500) scale(6,6)").selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
+	d3.select('svg').append("g").attr("transform", "translate(-880, -600) scale(6,6)").selectAll('path').data(geojson.features).enter().append('path').attr('d', geoGenerator).style("fill", '#FFFFFF').style("stroke", "#000000").style("stroke-width",".1");
 	      
       }
 	    
@@ -88,7 +88,7 @@
       async function init(){
 	draw_map();
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -440)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".25");
+	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -540)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".25");
         format_points();
       }
     
