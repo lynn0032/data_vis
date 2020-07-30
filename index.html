@@ -1,5 +1,7 @@
 <html>
   <script src = 'https://d3js.org/d3.v5.min.js'></script>
+	
+	<button onclick="cases()">Total confirmed COVID cases per capita</button>
   
   <svg width=960 height=500></svg>
   <body onload = 'init()'>
@@ -77,6 +79,11 @@
 		points.style("fill", "blue");
 	}
 	}
+	    
+      function cases(){
+	      choice = "cases";
+	      format_points();
+      }
 	    
       async function init(){
 	draw_map();
