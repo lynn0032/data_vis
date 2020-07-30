@@ -157,6 +157,25 @@
 		switch_buttons();
 	}
 	    
+	//source for tooltop functions: https://www.visualcinnamon.com/2015/07/voronoi.html
+	function showTooltip(d) {
+    		var element = d3.selectAll("circle");
+		$(element).popover({
+        placement: 'auto top',
+        container: '#chart',
+        trigger: 'manual',
+        html : true,
+        content: function() { return d['County Name']; }
+        });
+    $(element).popover('show');
+}
+
+function removeTooltip(d) {
+    $('.popover').each(function() {
+        $(this).remove();
+    });
+}
+	    
       async function init(){
 	draw_map();
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
@@ -167,12 +186,16 @@
         if (d == "cases") {cases();} 
 	if (d == "deaths") {deaths();}
 	if (d == "deathrate") {deathrate();}
+		
+	//source for voronoi: https://www.visualcinnamon.com/2015/07/voronoi.html
+	var voronoi = d3.geom.voronoi().data(data).x(function(d) { return 16*parseFloat(d.pclon10); }).y(function(d) { return 16*(90-parseFloat(d.pclat10)); }).clipExtent([[0, 150], [960, 500]]);
     });
+	svg.selectAll("path").data(voronoi(data)).enter().append("path").attr("d", function(d, i) { return "M" + d.join("L") + "Z"; }).datum(function(d, i) { return d.point; }).attr("class", function(d,i) { return "voronoi " + d['County Name']; }).style("fill", "none").style("pointer-events", "all").on("mouseover", showTooltip).on("mouseout",  removeTooltip);
       }
     
     </script>
   </body>
   <p>
-    Meowzers, scaled!
+    Meowzers, tooltips!
   </p>
 </html>
