@@ -34,15 +34,15 @@
 	  
 	  <text x=10 y=15 font-family="Verdana" font-size="15" fill="black"> What would you like to explore? </text>
 	  <g style="cursor:pointer">
-	  <rect x=10 y=20 width=300 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#red_gradient)"></rect>
+	  <rect x=10 y=20 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#red_gradient)"></rect>
 	  <text x=12 y=35 font-family="Verdana" font-size="14" fill="black"> Total confirmed COVID cases per capita </text>
 		</g>
 	  <g style="cursor:pointer">
-	  <rect x=10 y=40 width=300 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
+	  <rect x=10 y=40 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
 	  <text x=12 y=55 font-family="Verdana" font-size="14" fill="black"> Total COVID deaths per capita </text>
 		  </g>
 	  <g style="cursor:pointer">
-	  <rect x=10 y=60 width=300 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
+	  <rect x=10 y=60 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
 	  <text x=12 y=75 font-family="Verdana" font-size="14" fill="black"> COVID death rate (deaths per confirmed case) </text>
 		  </g>
 	</svg>
@@ -115,10 +115,10 @@
       function format_points(){
 	var current_date = date;
 	if (choice == "deaths"){
-		current_date = current_date += 'd';
+		current_date = current_date + 'd';
 	}
 	if (choice == "deathrate"){
-		var death_date = current_date += 'd';
+		var death_date = current_date + 'd';
 		points.attr("r", function(d){if (d[current_date] == 0){return 0;} return Math.sqrt(50*d[death_date]/d[current_date]);});
 		points.style("fill", "orange").style("fill-opacity", ".75");
 		return;
