@@ -170,11 +170,34 @@
 	if (d == "deathrate") {deathrate();}
 	});
 	
+	// Source for voronoihttps://observablehq.com/@didoesdigital/9-may-2020-d3-scatterplot-with-voronoi-tooltips
+  const voronoi = d3.Delaunay.from(data, d => x(16*parseFloat(d.pclon10) + 2000), d => y(16*(90-parseFloat(d.pclat10))-540)).voronoi([0, 150, 960, 500]);
+
+  svg.append("g")
+    .attr("class", "voronoiWrapper")
+    .selectAll("path")
+    .data(data)
+    .join("path")
+      .attr("opacity", 0.5)
+      // .attr("stroke", "#ff1493") // Hide overlay
+      .attr("fill", "none")
+      .style("pointer-events", "all")
+      .attr("d", (d,i) => voronoi.renderCell(i))
+      .on("mouseover", (d, i) => {
+          svg.append('g')
+            .attr("class", "tooltip")
+            .attr("transform", `translate(${x(16*parseFloat(d.pclon10) + 2000)},${y(16*(90-parseFloat(d.pclat10))-540)})`)
+            .call(popover, `Hi!`)
+      })
+      .on("mouseout", () => svg.selectAll('.tooltip').remove());
+
+
+	
       }
     
     </script>
   </body>
   <p>
-    Meowzers,  back to basics
+    Meowzers, Voronoi?
   </p>
 </html>
