@@ -119,8 +119,9 @@
 	}
 	if (choice == "deathrate"){
 		var death_date = current_date += 'd';
-		points.attr("r", function(d){return Math.sqrt(100*d[death_date]/d[current_date]);});
-		points.style("fill", "orange").style("fill-opacity", ".25");
+		points.attr("r", function(d){return Math.sqrt(200*d[death_date]/d[current_date]);});
+		points.style("fill", "orange").style("fill-opacity", ".75");
+		return;
 	}
 	points.attr("r", function(d){return Math.sqrt(2000*d[current_date]/d.population);});
 	if (choice == "cases"){
