@@ -108,7 +108,7 @@
 	if (choice == "deaths"){
 		current_date = current_date += 'd';
 	}
-	points.attr("r", function(d){return Math.sqrt(1000*d[current_date]/d.population);});
+	points.attr("r", function(d){return Math.sqrt(2000*d[current_date]/d.population);});
 	if (choice == "cases"){
 		points.style("fill", "red").style("fill-opacity", ".25");
 	}
@@ -150,6 +150,6 @@
     </script>
   </body>
   <p>
-    Meowzers, selections?!
+    Meowzers, larger points!
   </p>
 </html>
