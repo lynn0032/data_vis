@@ -101,7 +101,11 @@
       }
 	    
       function format_points(){
-	points.attr("r", function(d){return Math.sqrt(1000*d[date]/d.population);});
+	var current_date = date;
+	if (choice == "deaths"){
+		current_date = current_date += 'd';
+	}
+	points.attr("r", function(d){return Math.sqrt(1000*d[current_date]/d.population);});
 	if (choice == "cases"){
 		points.style("fill", "red");
 	}
@@ -134,6 +138,6 @@
     </script>
   </body>
   <p>
-    Meowzers, deaths!!!
+    Meowzers, data!!!
   </p>
 </html>
