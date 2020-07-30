@@ -67,7 +67,7 @@
 
         
         const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-        d3.select('svg').append("g").attr("transform", "translate(2000, -640)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.Longitude);}).attr("cy",function(d){return 16*(90-parseFloat(d.Latitude));}).attr("r", function(d){return Math.sqrt(1000*d['2020-07-27 00:00:00']/d.population);});
+        d3.select('svg').append("g").attr("transform", "translate(2000, -640)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat));}).attr("r", function(d){return Math.sqrt(1000*d['2020-07-27 00:00:00']/d.population);});
       }
     
     </script>
