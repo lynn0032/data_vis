@@ -110,10 +110,10 @@
 	}
 	points.attr("r", function(d){return Math.sqrt(1000*d[current_date]/d.population);});
 	if (choice == "cases"){
-		points.style("fill", "red");
+		points.style("fill", "red").style("fill-opacity", ".25");
 	}
 	if (choice == "deaths"){
-		points.style("fill", "blue");
+		points.style("fill", "blue").style("fill-opacity", ".75");
 	}
 	}
 	    
@@ -141,6 +141,6 @@
     </script>
   </body>
   <p>
-    Meowzers, cursors!
+    Meowzers, opacity!
   </p>
 </html>
