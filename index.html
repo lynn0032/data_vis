@@ -120,15 +120,16 @@
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
 	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -540)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".25");
         format_points();
-	var buttons = ["cases", "deaths"]
+	var buttons = ["cases", "deaths"];
 	d3.select('svg').selectAll('rect').data(buttons).on("click", function(d) {
-        if (d == "cases") {cases();} if (d == "deaths") {deaths();};
-    })
+        if (d == "cases") {cases();} 
+	if (d == "deaths") {deaths();}
+    });
       }
     
     </script>
   </body>
   <p>
-    Meowzers, buttons!
+    Meowzers, buttons?
   </p>
 </html>
