@@ -121,7 +121,7 @@
 		var colors = ["url(#gray_gradient)", "url(#gray_gradient)"];
 		if (choice == "cases") {colors[0] = "url(#red_gradient)";}
 		if (choice == "deaths") {colors[1] = "url(#purple_gradient)";}
-		d3.select('svg').selectAll('g').selectAll('rect').data(colors).attr("fill", function(d) {return d;});
+		d3.select('svg').selectAll('g').select('rect').data(colors).attr("fill", function(d) {return d;});
 	}
 	    
       function cases(){
@@ -150,6 +150,6 @@
     </script>
   </body>
   <p>
-    Meowzers, switch buttons!
+    Meowzers, selections?!
   </p>
 </html>
