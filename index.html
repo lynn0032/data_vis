@@ -116,14 +116,23 @@
 		points.style("fill", "purple").style("fill-opacity", ".75");
 	}
 	}
+
+	function switch_buttons(){
+		var colors = ["url(#gray_gradient)", "url(#gray_gradient)"];
+		if (choice == "cases") {colors[0] = "url(#red_gradient)";}
+		if (choice == "deaths") {colors[1] = "url(#purple_gradient)";}
+		d3.select('svg').selectAll('g').selectAll('rect').data(colors).attr("fill", function(d) {return d;});
+	}
 	    
       function cases(){
 	      choice = "cases";
 	      format_points();
+	      switch_buttons();
       }
 	function deaths(){
 		choice = "deaths";
 		format_points();
+		switch_buttons();
 	}
 	    
       async function init(){
@@ -141,6 +150,6 @@
     </script>
   </body>
   <p>
-    Meowzers, purple!
+    Meowzers, switch buttons!
   </p>
 </html>
