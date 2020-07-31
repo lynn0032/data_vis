@@ -126,11 +126,11 @@
 	}
 	if (choice == "deathrate"){
 		var death_date = current_date + 'd';
-		points.attr("r", function(d){if (d[current_date] == 0){return 0;} return Math.sqrt(100*d[death_date]/d[current_date]);});
+		points.attr("r", function(d){if (d[current_date] == 0){return 0;} return Math.sqrt(100.0*d[death_date]/d[current_date]);});
 		points.style("fill", "orange").style("fill-opacity", ".5");
 		return;
 	}
-	points.attr("r", function(d){return Math.sqrt(2000*d[current_date]/d.population);});
+	points.attr("r", function(d){return Math.sqrt(2000.0*d[current_date]/d.population);});
 	if (choice == "cases"){
 		points.style("fill", "red").style("fill-opacity", ".25");
 	}
@@ -165,7 +165,7 @@
 	}
 	    
 	function tooltip_text(d){
-		tooltip.html(d['County Name'] + " <br> Population: " + d.population + " <br> Cases Per Capita: " + d.date + " <br> Deaths Per Capita: " + d[date + "d"] + " <br> Death rate: " + d[date + "d"]/d[date]);
+		tooltip.html(d['County Name'] + " <br> Population: " + d.population + " <br> Cases: " + d.date + " <br> Deaths: " + d[date + "d"]);
 	}
 	    
       async function init(){
@@ -190,7 +190,7 @@
     
     </script>
 	    <p>
-    Meowzers, info?
+    Meowzers, info!
   </p>
   </body>
 
