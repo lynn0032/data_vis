@@ -166,14 +166,15 @@
 	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -540)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".25");
         format_points();
 	var buttons = ["cases", "deaths", "deathrate"];
-	d3.select('svg').selectAll('g').data(buttons).on("click", function(d) {
+	the_buttons = d3.select('svg').selectAll('g').data(buttons);
+	the_buttons.on("click", function(d) {
         if (d == "cases") {cases();} 
 	if (d == "deaths") {deaths();}
 	if (d == "deathrate") {deathrate();}
 	});
-	window.points.on("mouseover", function(d,i){
+	the_buttons.on("mouseover", function(d,i){
 		tooltip.style("opacity", 1).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!");});
-	window.points.on("mouseout", function(){tooltip.style("opacity", 0);});
+	the_buttons.on("mouseout", function(){tooltip.style("opacity", 0);});
 	
 
       }
@@ -181,6 +182,6 @@
     </script>
   </body>
   <p>
-    Meowzers, on top?
+    Meowzers, buttons??
   </p>
 </html>
