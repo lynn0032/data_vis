@@ -184,19 +184,27 @@
 		tooltip_text(d);
 		tooltip.style("visibility", "visible").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");});
 	points.on("mouseout", function(){tooltip.style("visibility", "hidden");});
+	      
+	//source for voronoi: https://observablehq.com/@didoesdigital/9-may-2020-d3-scatterplot-with-voronoi-tooltips
+	var voronoi_points = [[200,200],[400,400],[200,400],[400,200]];
+	const voronoi = d3.Delaunay.from(voronoi_points);
+	var voronoi_cells = svg.append("g").selectAll("path").data(voronoi_points).join("path").attr("opacity", 0.5).attr("fill", "none").attr("d", (d,i) => voronoi.renderCell(i));
+	voronoi_cells.on("mouseover", function(d) {
+		tooltip.style("visibility", "visible").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("hi");});
+      voronoi_cells.on("mouseout", function(){tooltip.style("visibility", "hidden");});
 	
 	 //source for voronoi: https://observablehq.com/@didoesdigital/9-may-2020-d3-scatterplot-with-voronoi-tooltips
-	const voronoi = d3.Delaunay.from(data, d => x(16*parseFloat(d.pclon10)+2000), d => y(16*(90-parseFloat(d.pclat10))-540));
-	var voronoi_cells = svg.append("g").selectAll("path").data(data).join("path").attr("opacity", 0.5).attr("fill", "none").attr("d", (d,i) => voronoi.renderCell(i));
-	voronoi_cells.on("mouseover", function(d) {
-		tooltip_text(d);
-		tooltip.style("visibility", "visible").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");});
-      voronoi_cells.on("mouseout", function(){tooltip.style("visibility", "hidden");});
+	//const voronoi = d3.Delaunay.from(data, d => x(16*parseFloat(d.pclon10)+2000), d => y(16*(90-parseFloat(d.pclat10))-540));
+	//var voronoi_cells = svg.append("g").selectAll("path").data(data).join("path").attr("opacity", 0.5).attr("fill", "none").attr("d", (d,i) => voronoi.renderCell(i));
+	//voronoi_cells.on("mouseover", function(d) {
+	//	tooltip_text(d);
+	//	tooltip.style("visibility", "visible").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");});
+      //voronoi_cells.on("mouseout", function(){tooltip.style("visibility", "hidden");});
       }
     
     </script>
 	    <p>
-    Meowzers, voronoi!
+    Meowzers, voronoi?
   </p>
   </body>
 
