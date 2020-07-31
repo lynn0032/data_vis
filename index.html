@@ -181,7 +181,7 @@
 	});
 	window.tooltip = d3.select("div").attr("class", "tooltip").style("position", "absolute").style("visibility", "hidden").style("background-color", "white").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px");
 	points.on("mouseover", function(d){
-		d3.select(this).style("stroke", "black").style("opacity", 1");
+		d3.select(this).style("stroke", "black").style("opacity", "1");
 		tooltip_text(d);
 		tooltip.style("visibility", "visible").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");});
 	points.on("mouseout", function(){
