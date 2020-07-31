@@ -49,7 +49,7 @@
 	
 	
   <body onload = 'init()'>
-	  <div name="tooltip" opacity=0></div>
+	  
     <script>
 	    
 	//GeoJSON from https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json
@@ -173,6 +173,7 @@
 	if (d == "deaths") {deaths();}
 	if (d == "deathrate") {deathrate();}
 	});
+	var tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 	the_buttons.on("mouseover", function(d,i){
 		tooltip.style("opacity", 1).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!");});
 	the_buttons.on("mouseout", function(){tooltip.style("opacity", 0);});
@@ -183,6 +184,6 @@
     </script>
   </body>
   <p>
-    Meowzers, tooltip??
+    Meowzers, tooltip!
   </p>
 </html>
