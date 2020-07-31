@@ -1,6 +1,7 @@
 <html>
   <script src = 'https://d3js.org/d3.v5.min.js'></script>
-	
+
+  <div name="tooltip" opacity=0></div>
   
   <svg width=960 height=500>
 	  <defs>
@@ -169,27 +170,10 @@
 	if (d == "deaths") {deaths();}
 	if (d == "deathrate") {deathrate();}
 	});
+	points.on("mouseover", function(d,i){
+		tooltip.style("opacity", 1).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!").on("mouseout", function(){tooltip.style("opacity", 0)});
+	}
 	
-	// Source for voronoihttps://observablehq.com/@didoesdigital/9-may-2020-d3-scatterplot-with-voronoi-tooltips
-  const voronoi = d3.Delaunay.from(data, d => x(16*parseFloat(d.pclon10) + 2000), d => y(16*(90-parseFloat(d.pclat10))-540)).voronoi([0, 150, 960, 500]);
-
-  svg.append("g")
-    .attr("class", "voronoiWrapper")
-    .selectAll("path")
-    .data(data)
-    .join("path")
-      .attr("opacity", 0.5)
-      // .attr("stroke", "#ff1493") // Hide overlay
-      .attr("fill", "none")
-      .style("pointer-events", "all")
-      .attr("d", (d,i) => voronoi.renderCell(i))
-      .on("mouseover", (d, i) => {
-          svg.append('g')
-            .attr("class", "tooltip")
-            .attr("transform", `translate(${x(16*parseFloat(d.pclon10) + 2000)},${y(16*(90-parseFloat(d.pclat10))-540)})`)
-            .call(popover, `Hi!`)
-      })
-      .on("mouseout", () => svg.selectAll('.tooltip').remove());
 
 
 	
@@ -198,6 +182,6 @@
     </script>
   </body>
   <p>
-    Meowzers, Voronoi?
+    Meowzers, tooltip?
   </p>
 </html>
