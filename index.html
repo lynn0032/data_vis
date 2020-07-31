@@ -165,7 +165,7 @@
 	}
 	    
 	function tooltip_text(d){
-		tooltip.html(d['County Name'] + " <br> Population: " + d.population);
+		tooltip.html(d['County Name'] + " <br> Population: " + d.population + " <br> Cases Per Capita: " + d.date + " <br> Deaths Per Capita: " + d[date + "d"] + " <br> Death rate: " + d[date + "d"]/d[date]);
 	}
 	    
       async function init(){
@@ -190,7 +190,7 @@
     
     </script>
 	    <p>
-    Meowzers, population?
+    Meowzers, info?
   </p>
   </body>
 
