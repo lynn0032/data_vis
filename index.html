@@ -187,7 +187,7 @@
 	      
 	//source for voronoi: https://observablehq.com/@didoesdigital/9-may-2020-d3-scatterplot-with-voronoi-tooltips
 	var voronoi_points = [[200,200],[400,400],[200,400],[400,200]];
-	const voronoi = d3.Delaunay.from(voronoi_points);
+	const voronoi = d3.Delaunay.from(voronoi_points).voronoi();
 	var voronoi_cells = svg.append("g").selectAll("path").data(voronoi_points).join("path").attr("opacity", 0.5).attr("fill", "none").attr("d", (d,i) => voronoi.renderCell(i));
 	voronoi_cells.on("mouseover", function(d) {
 		tooltip.style("visibility", "visible").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("hi");});
@@ -204,7 +204,7 @@
     
     </script>
 	    <p>
-    Meowzers, voronoi?
+    Meowzers, voronoi!
   </p>
   </body>
 
