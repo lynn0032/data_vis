@@ -192,6 +192,7 @@
 	      
 	var slider = d3.sliderHorizontal().min(0).max(117).step(1).width(300).displayValue(false).on('onchange', (val) => {
       date = toString(val);
+	d3.select('#value').text(val);
 	format_points();
     });
 	d3.select('svg').append('g').attr('transform', 'translate(500,40)').call(slider);
@@ -199,7 +200,7 @@
     
     </script>
 	    <p>
-    Meowzers, a slider!
+    Meowzers, see the value!
   </p>
 	  <p id="value"></p>
   </body>
