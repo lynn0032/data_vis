@@ -1,9 +1,11 @@
 <html>
   <script src = 'https://d3js.org/d3.v5.min.js'></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
 	
   <body onload = 'init()'>
 	 
 	  <div> </div>
+	  <div id="slider"></div>
   
   <svg width=960 height=500>
 	  <defs>
@@ -187,11 +189,16 @@
 	points.on("mouseout", function(){
 		d3.select(this).style("stroke-opacity", "0");
 		tooltip.style("visibility", "hidden");});
+	      
+	var slider = d3.sliderHorizontal().min(0).max(117).step(1).width(300).displayValue(false).on('onchange', function(val){
+		date = value;
+		format_points();});
+	d3.select('#slider').append('svg').attr('width', 500).attr('height', 100).append('g').attr('transform', 'translate(30,30)').call(slider);
       }
     
     </script>
 	    <p>
-    Meowzers, stroke opacity!
+    Meowzers, a slider!
   </p>
   </body>
 
