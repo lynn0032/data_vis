@@ -164,7 +164,6 @@
 		switch_buttons();
 	}
 	    
-	    
       async function init(){
 	draw_map();
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
@@ -176,9 +175,9 @@
 	if (d == "deaths") {deaths();}
 	if (d == "deathrate") {deathrate();}
 	});
-	var tooltip = d3.select("div").attr("class", "tooltip").style("position", "absolute").style("visibility", "hidden").style("background-color", "white").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px");
+	window.tooltip = d3.select("div").attr("class", "tooltip").style("position", "absolute").style("visibility", "hidden").style("background-color", "white").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px");
 	points.on("mouseover", function(d,i){
-		return tooltip.style("visibility", "visible").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!");});
+		return tooltip.style("visibility", "visible").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px");}).html(d['County Name'] + " <br> " + d[date]);
 	points.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 	
 
@@ -186,7 +185,7 @@
     
     </script>
 	    <p>
-    Meowzers, invisible!
+    Meowzers, names!
   </p>
   </body>
 
