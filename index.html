@@ -176,8 +176,8 @@
 	});
 	var tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 	points.on("mouseover", function(d,i){
-		tooltip.style("opacity", 1).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!");});
-	points.on("mouseout", function(){tooltip.style("opacity", 0);});
+		return tooltip.style("opacity", 1).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!");});
+	points.on("mouseout", function(){return tooltip.style("opacity", 0);});
 	
 
       }
@@ -185,6 +185,6 @@
     </script>
   </body>
   <p>
-    Meowzers, body!
+    Meowzers, return!
   </p>
 </html>
