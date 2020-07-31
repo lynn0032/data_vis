@@ -2,6 +2,8 @@
   <script src = 'https://d3js.org/d3.v5.min.js'></script>
 	
   <body onload = 'init()'>
+	 
+	  <div> </div>
   
   <svg width=960 height=500>
 	  <defs>
@@ -174,7 +176,7 @@
 	if (d == "deaths") {deaths();}
 	if (d == "deathrate") {deathrate();}
 	});
-	var tooltip = d3.append("div").attr("class", "tooltip").style("opacity", 0);
+	var tooltip = d3.select("div").attr("class", "tooltip").style("opacity", 0);
 	points.on("mouseover", function(d,i){
 		return tooltip.style("opacity", 1).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!");});
 	points.on("mouseout", function(){return tooltip.style("opacity", 0);});
@@ -184,7 +186,7 @@
     
     </script>
 	    <p>
-    Meowzers, return!
+    Meowzers, div!
   </p>
   </body>
 
