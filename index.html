@@ -170,9 +170,9 @@
 	if (d == "deaths") {deaths();}
 	if (d == "deathrate") {deathrate();}
 	});
-	points.on("mouseover", function(d,i){
-		tooltip.style("opacity", 1).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!")});
-	points.on("mouseout", function(){tooltip.style("opacity", 0);});
+	window.points.on("mouseover", function(d,i){
+		tooltip.style("opacity", 1).style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY) + "px").html("Hi!");});
+	window.points.on("mouseout", function(){tooltip.style("opacity", 0);});
 	
 
       }
