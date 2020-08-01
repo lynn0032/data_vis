@@ -188,7 +188,12 @@
 	}
 	    
 	function tooltip_text(d){
-		tooltip.html(d['County Name'] + " <br> Date: " + " <br> Population: " + d.population + " <br> Cases: " + d[date] + " <br> Deaths: " + d[date + "d"] + " <br> New Cases: " + d[date + "dc"] + " <br> New Deaths: " + d[date + "dd"]);
+		tooltip.html(d['County Name'] + " <br> Date: " + get_date() + " <br> Population: " + d.population + " <br> Cases: " + d[date] + " <br> Deaths: " + d[date + "d"] + " <br> New Cases: " + d[date + "dc"] + " <br> New Deaths: " + d[date + "dd"]);
+	}
+	    
+	function get_date(){
+		var actual_date = new Date(parseFloat(date)*86400000 + 1577858400000.0);
+		return actual_date.getMonth() + '/' + actual_date.getDate();
 	}
 	    
       async function init(){
@@ -222,7 +227,7 @@
     
     </script>
 	    <p>
-    Meowzers, dates!
+    Meowzers, tooltip dates!
   </p>
 	  <p id="value"></p>
   </body>
