@@ -172,23 +172,27 @@
 	      choice = "cases";
 	      format_points();
 	      switch_buttons();
+	      update_legend();
       }
 	function deaths(){
 		choice = "deaths";
 		format_points();
 		switch_buttons();
+		update_legend();
 	}
 	    
 	function daily_cases(){
 		choice = "daily cases";
 		format_points();
 		switch_buttons();
+		update_legend();
 	}
 	    
 	function daily_deaths(){
 		choice = "daily deaths";
 		format_points();
 		switch_buttons();
+		update_legend();
 	}
 	    
 	function get_date(){
@@ -207,16 +211,16 @@
 	    
 	function update_legend(){
 		if (choice == "cases") {
-			legend.html("The area of each point is proportional to the total number of COVID cases per capita in the county")
+			legend.html("The area of each point is proportional to the <br>total number of COVID cases per capita in the county")
 		}
 		if (choice == "deaths") {
-			legend.html("The area of each point is proportional to the total number of COVID deaths per capita in the county")
+			legend.html("The area of each point is proportional to the <br>total number of COVID deaths per capita in the county")
 		}
 		if (choice == "daily cases") {
-			legend.html("The area of each point is proportional to the number of new confirmed COVID cases per capita in the county on the given day")
+			legend.html("The area of each point is proportional to the <br>number of new confirmed COVID cases per capita in the county on the given day")
 		}
 		if (choice == "daily deaths") {
-			legend.html("The area of each point is proportional to the number of new COVID deaths per capita in the county on the given day")
+			legend.html("The area of each point is proportional to the <br>number of new COVID deaths per capita in the county on the given day")
 		}
 	}
 	    
@@ -250,7 +254,7 @@
 	points.on("mouseout", function(){
 		d3.select(this).style("stroke-opacity", "0");
 		tooltip.style("visibility", "hidden");});
-	window.legend = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").style("left", "10px").style("top", "420px").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px").style("font-family", "Verdana").style("font-size", "10");
+	window.legend = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").style("left", "10px").style("top", "420px").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px").style("font-family", "Verdana").style("font-size", "11");
 	update_legend();
 	
       }
