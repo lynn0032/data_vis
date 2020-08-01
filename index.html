@@ -205,10 +205,10 @@
 	    
       async function init(){
 	draw_map();
-	var display_date = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").html(get_date()).style("left", "800px").style("top", "60px");
+	var display_date = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").html(get_date()).style("left", "850px").style("top", "60px");
 	var slider = d3.sliderHorizontal().min(23).max(207).step(1).width(300).ticks(0).displayValue(false).value(207).on('onchange', (val) => {
       		date = d3.format('.1f')(val);
-		display_date.html(get_date()).style("left", (d3.event.pageX) + "px");
+		display_date.html(get_date()).style("left", (550+date*2/3.0) + "px");
 		format_points();
     		});
 	d3.select('svg').append('g').attr('transform', 'translate(550,40)').call(slider);
@@ -236,7 +236,7 @@
     
     </script>
 	    <p>
-    Meowzers, :)
+    Meowzers, move
   </p>
 
   </body>
