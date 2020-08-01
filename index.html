@@ -138,17 +138,17 @@
 	}
 	if (choice == "deaths"){
 		current_date = current_date + 'd';
-		points.attr("r", function(d){return Math.sqrt(8000.0*d[current_date]/d.population);});
+		points.attr("r", function(d){return Math.sqrt(16000.0*d[current_date]/d.population);});
 		points.style("fill", "purple").style("fill-opacity", ".25");
 	}
 	if (choice == "daily cases"){
 		current_date = current_date + 'dc';
-		points.attr("r", function(d){return Math.sqrt(8000.0*d[current_date]/d.population);});
+		points.attr("r", function(d){return Math.sqrt(16000.0*d[current_date]/d.population);});
 		points.style("fill", "orange").style("fill-opacity", ".25");
 	}
 	if (choice == "daily deaths"){
 		current_date = current_date + 'dd';
-		points.attr("r", function(d){return Math.sqrt(16000.0*d[current_date]/d.population);});
+		points.attr("r", function(d){return Math.sqrt(32000.0*d[current_date]/d.population);});
 		points.style("fill", "brown").style("fill-opacity", ".5");
 	}
 	}
