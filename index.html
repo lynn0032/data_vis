@@ -192,8 +192,13 @@
 	}
 	    
 	function get_date(){
-		var actual_date = new Date(parseInt(date)*86400000 + 1577858400000);
-		return actual_date.getMonth() + '/' + actual_date.getDate() + '/' + actual_date.getYear();
+		if (date <= 30){ return "1/" + toString(parseInt(date)) + "/20"; }
+		if (date <= 59){ return "2/" + toString(parseInt(date) - 30) + "/20"; }
+		if (date <= 90){ return "3/" + toString(parseInt(date) - 59) + "/20"; }
+		if (date <= 120){ return "4/" + toString(parseInt(date) - 90) + "/20"; }
+		if (date <= 151){ return "5/" + toString(parseInt(date) - 120) + "/20"; }
+		if (date <= 181){ return "6/" + toString(parseInt(date) - 151) + "/20"; }
+		if (date <= 212){ return "7/" + toString(parseInt(date) - 181) + "/20"; }
 	}
 	    
       async function init(){
@@ -227,7 +232,7 @@
     
     </script>
 	    <p>
-    Meowzers, ints!
+    Meowzers, compute date!
   </p>
 	  <p id="value"></p>
   </body>
