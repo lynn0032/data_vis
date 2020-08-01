@@ -187,10 +187,6 @@
 		switch_buttons();
 	}
 	    
-	function tooltip_text(d){
-		tooltip.html(d['County Name'] + " <br> Date: " + get_date() + " <br> Population: " + d.population + " <br> Cases: " + d[date] + " <br> Deaths: " + d[date + "d"] + " <br> New Cases: " + d[date + "dc"] + " <br> New Deaths: " + d[date + "dd"]);
-	}
-	    
 	function get_date(){
 		if (date <= 30){ return "1/" + toString(parseFloat(date)) + "/20"; }
 		if (date <= 59){ return "2/" + toString(parseFloat(date) - 30) + "/20"; }
@@ -200,6 +196,12 @@
 		if (date <= 181){ return "6/" + toString(parseFloat(date) - 151) + "/20"; }
 		if (date <= 212){ return "7/" + toString(parseFloat(date) - 181) + "/20"; }
 	}
+	    
+	function tooltip_text(d){
+		tooltip.html(d['County Name'] + " <br> Date: " + get_date() + " <br> Population: " + d.population + " <br> Cases: " + d[date] + " <br> Deaths: " + d[date + "d"] + " <br> New Cases: " + d[date + "dc"] + " <br> New Deaths: " + d[date + "dd"]);
+	}
+	    
+	
 	    
       async function init(){
 	draw_map();
