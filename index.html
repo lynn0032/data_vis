@@ -42,29 +42,29 @@
       ]]></style>
 	  </defs>
 	  
-	  <rect x=425 y=10 width=525 height=40 style="stroke-width:1;stroke:black;fill-opacity:.1"></rect>
-	  <text x=500 y=40 font-family="Verdana" font-size="20" fill="black"> COVID Cases and Deaths in United States Counties </text>
+	  <rect x=10 y=10 width=525 height=40 style="stroke-width:1;stroke:black;fill-opacity:.1"></rect>
+	  <text x=15 y=40 font-family="Verdana" font-size="20" fill="black"> COVID Cases and Deaths in United States Counties </text>
 		</g>
 	  
-	  <text x=10 y=15 font-family="Verdana" font-size="15" fill="black"> What would you like to explore? </text>
+	  <text x=500 y=15 font-family="Verdana" font-size="15" fill="black"> What would you like to explore? </text>
 	  <g style="cursor:pointer">
-	  <rect x=10 y=20 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#red_gradient)"></rect>
-	  <text x=12 y=35 font-family="Verdana" font-size="14" fill="black"> Total confirmed COVID cases per capita </text>
+	  <rect x=500 y=20 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#red_gradient)"></rect>
+	  <text x=502 y=35 font-family="Verdana" font-size="14" fill="black"> Total confirmed COVID cases per capita </text>
 		</g>
 	  <g style="cursor:pointer">
-	  <rect x=10 y=40 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
-	  <text x=12 y=55 font-family="Verdana" font-size="14" fill="black"> Total COVID deaths per capita </text>
+	  <rect x=500 y=40 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
+	  <text x=502 y=55 font-family="Verdana" font-size="14" fill="black"> Total COVID deaths per capita </text>
 		  </g>
 	  <g style="cursor:pointer">
-	  <rect x=10 y=60 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
-	  <text x=12 y=75 font-family="Verdana" font-size="14" fill="black"> Daily new confirmed COVID cases per capita </text>
+	  <rect x=500 y=60 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
+	  <text x=502 y=75 font-family="Verdana" font-size="14" fill="black"> Daily new confirmed COVID cases per capita </text>
 		  </g>
 	  <g style="cursor:pointer">
-	  <rect x=10 y=80 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
-	  <text x=12 y=95 font-family="Verdana" font-size="14" fill="black"> Daily COVID deaths per capita </text>
+	  <rect x=500 y=80 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
+	  <text x=502 y=95 font-family="Verdana" font-size="14" fill="black"> Daily COVID deaths per capita </text>
 		  </g>
-	  <text x=462 y=90 font-family="Verdana" font-size="14" fill="black"> 1/23/2020 </text>
-	  <text x=864 y=90 font-family="Verdana" font-size="14" fill="black"> 7/27/2020 </text>
+	  <text x=12 y=90 font-family="Verdana" font-size="14" fill="black"> 1/23/2020 </text>
+	  <text x=414 y=90 font-family="Verdana" font-size="14" fill="black"> 7/27/2020 </text>
 	</svg>
 	
 	
@@ -209,13 +209,13 @@
 	    
       async function init(){
 	draw_map();
-	var display_date = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").html(get_date()).style("left", (500+date*1.65) + "px").style("top", "100px");
+	var display_date = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").html(get_date()).style("left", (50+date*1.65) + "px").style("top", "100px");
 	var slider = d3.sliderHorizontal().min(23).max(207).step(1).width(300).ticks(0).displayValue(false).value(207).on('onchange', (val) => {
       		date = d3.format('.1f')(val);
-		display_date.html(get_date()).style("left", (500+date*1.65) + "px");
+		display_date.html(get_date()).style("left", (50+date*1.65) + "px");
 		format_points();
     		});
-	d3.select('svg').append('g').attr('transform', 'translate(550,80)').call(slider);
+	d3.select('svg').append('g').attr('transform', 'translate(100,80)').call(slider);
 	      
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
 	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -540)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".5");
