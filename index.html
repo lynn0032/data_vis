@@ -192,8 +192,8 @@
 	}
 	    
 	function get_date(){
-		var actual_date = new Date(parseFloat(date)*86400000 + 4256258400.0);
-		return actual_date.getMonth() + '/' + actual_date.getDate();
+		var actual_date = new Date(parseFloat(date)*86400000.0 + 1577858400000.0);
+		return actual_date.getMonth() + '/' + actual_date.getDate() + '/' + actual_date.getYear();
 	}
 	    
       async function init(){
@@ -227,7 +227,7 @@
     
     </script>
 	    <p>
-    Meowzers, dates!
+    Meowzers, years!
   </p>
 	  <p id="value"></p>
   </body>
