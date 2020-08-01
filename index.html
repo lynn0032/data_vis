@@ -53,11 +53,11 @@
 		  </g>
 	  <g style="cursor:pointer">
 	  <rect x=10 y=60 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
-	  <text x=12 y=75 font-family="Verdana" font-size="14" fill="black"> Daily new confirmed COVID cases </text>
+	  <text x=12 y=75 font-family="Verdana" font-size="14" fill="black"> Daily new confirmed COVID cases per capita </text>
 		  </g>
 	  <g style="cursor:pointer">
 	  <rect x=10 y=80 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
-	  <text x=12 y=95 font-family="Verdana" font-size="14" fill="black"> Daily COVID deaths </text>
+	  <text x=12 y=95 font-family="Verdana" font-size="14" fill="black"> Daily COVID deaths per capita </text>
 		  </g>
 	</svg>
 	
@@ -134,21 +134,21 @@
 	var current_date = date;
 	if (choice == "cases"){
 		points.attr("r", function(d){return Math.sqrt(1000.0*d[current_date]/d.population);});
-		points.style("fill", "red").style("fill-opacity", ".5");
+		points.style("fill", "red").style("fill-opacity", ".25");
 	}
 	if (choice == "deaths"){
 		current_date = current_date + 'd';
-		points.attr("r", function(d){return Math.sqrt(4000.0*d[current_date]/d.population);});
-		points.style("fill", "purple").style("fill-opacity", ".5");
+		points.attr("r", function(d){return Math.sqrt(8000.0*d[current_date]/d.population);});
+		points.style("fill", "purple").style("fill-opacity", ".25");
 	}
 	if (choice == "daily cases"){
 		current_date = current_date + 'dc';
-		points.attr("r", function(d){return Math.sqrt(4000.0*d[current_date]/d.population);});
-		points.style("fill", "orange").style("fill-opacity", ".5");
+		points.attr("r", function(d){return Math.sqrt(8000.0*d[current_date]/d.population);});
+		points.style("fill", "orange").style("fill-opacity", ".25");
 	}
 	if (choice == "daily deaths"){
 		current_date = current_date + 'dd';
-		points.attr("r", function(d){return Math.sqrt(8000.0*d[current_date]/d.population);});
+		points.attr("r", function(d){return Math.sqrt(16000.0*d[current_date]/d.population);});
 		points.style("fill", "brown").style("fill-opacity", ".5");
 	}
 	}
@@ -220,7 +220,7 @@
     
     </script>
 	    <p>
-    Meowzers, typo fixed
+    Meowzers, weee!
   </p>
 	  <p id="value"></p>
   </body>
