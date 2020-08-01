@@ -205,7 +205,7 @@
 	    
       async function init(){
 	draw_map();
-	var display_date = d3.append("div").attr("class", "date").style("position", "absolute").style("visibility", "visible").style("background-color", "white").html(get_date()).style("left", "800px").style("top", "60px");
+	var display_date = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").html(get_date()).style("left", "800px").style("top", "60px");
 	var slider = d3.sliderHorizontal().min(23).max(207).step(1).width(300).ticks(0).displayValue(false).value(207).on('onchange', (val) => {
       		date = d3.format('.1f')(val);
 		format_points();
@@ -235,7 +235,7 @@
     
     </script>
 	    <p>
-    Meowzers, :(
+    Meowzers, :)
   </p>
 
   </body>
