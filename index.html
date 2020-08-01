@@ -59,6 +59,8 @@
 	  <rect x=10 y=80 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
 	  <text x=12 y=95 font-family="Verdana" font-size="14" fill="black"> Daily COVID deaths per capita </text>
 		  </g>
+	  <text x=500 y=40 font-family="Verdana" font-size="14" fill="black"> 1/1/2020 </text>
+	  <text x=500 y=40 font-family="Verdana" font-size="14" fill="black"> 7/27/2020 </text>
 	</svg>
 	
 	
@@ -191,12 +193,12 @@
 	    
       async function init(){
 	draw_map();
-	var slider = d3.sliderHorizontal().min(0).max(207).step(1).width(400).ticks(0).displayValue(false).value(207).on('onchange', (val) => {
+	var slider = d3.sliderHorizontal().min(0).max(207).step(1).width(300).ticks(0).displayValue(false).value(207).on('onchange', (val) => {
       		date = d3.format('.1f')(val);
 		d3.select('#value').text(date);
 		format_points();
     		});
-	d3.select('svg').append('g').attr('transform', 'translate(500,40)').call(slider);
+	d3.select('svg').append('g').attr('transform', 'translate(550,40)').call(slider);
 	      
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
 	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -540)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".5");
@@ -220,7 +222,7 @@
     
     </script>
 	    <p>
-    Meowzers, slider first!
+    Meowzers, dates!
   </p>
 	  <p id="value"></p>
   </body>
