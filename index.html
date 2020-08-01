@@ -205,6 +205,13 @@
 		tooltip.html(d['County Name'] + " <br> Date: " + get_date() + " <br> Population: " + d.population + " <br> Cases: " + d[date] + " <br> Deaths: " + d[date + "d"] + " <br> New Cases: " + d[date + "dc"] + " <br> New Deaths: " + d[date + "dd"]);
 	}
 	    
+	function update_legend(){
+		legend.html("This is the legend")
+		if (choice == "cases") {
+			legend.html("This is the legend")
+		}
+	}
+	    
 	
 	    
       async function init(){
@@ -235,6 +242,8 @@
 	points.on("mouseout", function(){
 		d3.select(this).style("stroke-opacity", "0");
 		tooltip.style("visibility", "hidden");});
+	window.legend = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").html(get_date()).style("left", "10px").style("top", "400px").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px");
+	update_legend();
 	
       }
     
