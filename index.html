@@ -206,9 +206,17 @@
 	}
 	    
 	function update_legend(){
-		legend.html("This is the legend")
 		if (choice == "cases") {
-			legend.html("This is the legend")
+			legend.html("The area of each point is proportional to the total number of COVID cases per capita in the county")
+		}
+		if (choice == "deaths") {
+			legend.html("The area of each point is proportional to the total number of COVID deaths per capita in the county")
+		}
+		if (choice == "daily cases") {
+			legend.html("The area of each point is proportional to the number of new confirmed COVID cases per capita in the county on the given day")
+		}
+		if (choice == "daily deaths") {
+			legend.html("The area of each point is proportional to the number of new COVID deaths per capita in the county on the given day")
 		}
 	}
 	    
@@ -242,7 +250,7 @@
 	points.on("mouseout", function(){
 		d3.select(this).style("stroke-opacity", "0");
 		tooltip.style("visibility", "hidden");});
-	window.legend = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").html(get_date()).style("left", "10px").style("top", "400px").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px");
+	window.legend = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("background-color", "white").style("left", "10px").style("top", "420px").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px").style("font-family", "Verdana");
 	update_legend();
 	
       }
