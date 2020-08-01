@@ -154,7 +154,7 @@
 	}
 	if (choice == "daily deaths"){
 		current_date = current_date + 'dd';
-		points.attr("r", function(d){return Math.sqrt(64000.0*d[current_date]/d.population);});
+		points.attr("r", function(d){return Math.sqrt(128000.0*d[current_date]/d.population);});
 		points.style("fill", "brown").style("fill-opacity", ".5");
 	}
 	}
