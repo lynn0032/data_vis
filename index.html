@@ -188,13 +188,13 @@
 	}
 	    
 	function get_date(){
-		if (date <= 30){ return "1/" + parseFloat(date).toString() + "/20"; }
-		if (date <= 59){ return "2/" + (parseFloat(date) - 30).toString() + "/20"; }
-		if (date <= 90){ return "3/" + (parseFloat(date) - 59).toString() + "/20"; }
-		if (date <= 120){ return "4/" + (parseFloat(date) - 90).toString() + "/20"; }
-		if (date <= 151){ return "5/" + (parseFloat(date) - 120).toString() + "/20"; }
-		if (date <= 181){ return "6/" + (parseFloat(date) - 151).toString() + "/20"; }
-		if (date <= 212){ return "7/" + (parseFloat(date) - 181).toString() + "/20"; }
+		if (date <= 30){ return "1/" + (parseFloat(date)+1).toString() + "/20"; }
+		if (date <= 59){ return "2/" + (parseFloat(date) - 29).toString() + "/20"; }
+		if (date <= 90){ return "3/" + (parseFloat(date) - 58).toString() + "/20"; }
+		if (date <= 120){ return "4/" + (parseFloat(date) - 89).toString() + "/20"; }
+		if (date <= 151){ return "5/" + (parseFloat(date) - 119).toString() + "/20"; }
+		if (date <= 181){ return "6/" + (parseFloat(date) - 150).toString() + "/20"; }
+		if (date <= 212){ return "7/" + (parseFloat(date) - 180).toString() + "/20"; }
 	}
 	    
 	function tooltip_text(d){
