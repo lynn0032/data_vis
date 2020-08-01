@@ -24,6 +24,11 @@
 	<stop offset="75%" stop-color="white"/>      
         <stop offset="100%" stop-color="orange"/>
       </linearGradient>
+	<linearGradient id="brown_gradient" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="brown"/>
+	<stop offset="75%" stop-color="white"/>      
+        <stop offset="100%" stop-color="brown"/>
+      </linearGradient>
 	<linearGradient id="gray_gradient" x1="0" x2="0" y1="0" y2="1">
         <stop offset="0%" stop-color="gray"/>
 	<stop offset="25%" stop-color="white"/>      
@@ -48,7 +53,11 @@
 		  </g>
 	  <g style="cursor:pointer">
 	  <rect x=10 y=60 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
-	  <text x=12 y=75 font-family="Verdana" font-size="14" fill="black"> COVID death rate (deaths per confirmed case) </text>
+	  <text x=12 y=75 font-family="Verdana" font-size="14" fill="black"> Daily new confirmed COVID cases </text>
+		  </g>
+	  <g style="cursor:pointer">
+	  <rect x=10 y=80 width=400 height=20 style="stroke-width:1;stroke:black;fill-opacity:.5" fill="url(#gray_gradient)"></rect>
+	  <text x=12 y=95 font-family="Verdana" font-size="14" fill="black"> Daily COVID deaths </text>
 		  </g>
 	</svg>
 	
@@ -112,7 +121,7 @@
 ]};
 	    
 	var choice = "cases";
-	var date = '117.0';
+	var date = '207.0';
 
       function draw_map(){
 	var projection = d3.geoEquirectangular();
@@ -123,29 +132,33 @@
 	    
       function format_points(){
 	var current_date = date;
+	if (choice == "cases"){
+		points.attr("r", function(d){return Math.sqrt(1000.0*d[current_date]/d.population);});
+		points.style("fill", "red").style("fill-opacity", ".5");
+	}
 	if (choice == "deaths"){
 		current_date = current_date + 'd';
+		points.attr("r", function(d){return Math.sqrt(4000.0*d[current_date]/d.population);});
+		points.style("fill", "purple").style("fill-opacity", ".5");
 	}
-	if (choice == "deathrate"){
-		var death_date = current_date + 'd';
-		points.attr("r", function(d){if (d[current_date] == 0){return 0;} return Math.sqrt(100.0*d[death_date]/d[current_date]);});
+	if (choice == "daily cases"){
+		current_date = current_date + 'dc';
+		points.attr("r", function(d){return Math.sqrt(4000.0*d[current_date]/d.population);});
 		points.style("fill", "orange").style("fill-opacity", ".5");
-		return;
 	}
-	points.attr("r", function(d){return Math.sqrt(2000.0*d[current_date]/d.population);});
-	if (choice == "cases"){
-		points.style("fill", "red").style("fill-opacity", ".25");
-	}
-	if (choice == "deaths"){
-		points.style("fill", "purple").style("fill-opacity", ".75");
+	if (choice == "daily deaths"){
+		current_date = current_date + 'dd';
+		points.attr("r", function(d){return Math.sqrt(8000.0*d[current_date]/d.population);});
+		points.style("fill", "brown").style("fill-opacity", ".5");
 	}
 	}
 
 	function switch_buttons(){
-		var colors = ["url(#gray_gradient)", "url(#gray_gradient)", "url(#gray_gradient)"];
+		var colors = ["url(#gray_gradient)", "url(#gray_gradient)", "url(#gray_gradient)", "url(#gray_gradient)"];
 		if (choice == "cases") {colors[0] = "url(#red_gradient)";}
 		if (choice == "deaths") {colors[1] = "url(#purple_gradient)";}
-		if (choice == "deathrate") {colors[2] = "url(#orange_gradient)";}
+		if (choice == "daily cases") {colors[2] = "url(#orange_gradient)";}
+		if (choice == "daily deaths") {colors[3] = "url(#brown_gradient)";}
 		d3.select('svg').selectAll('g').select('rect').data(colors).attr("fill", function(d) {return d;});
 	}
 	    
@@ -160,26 +173,33 @@
 		switch_buttons();
 	}
 	    
-	    function deathrate(){
-		choice = "deathrate";
+	function daily_cases(){
+		choice = "daily cases";
+		format_points();
+		switch_buttons();
+	}
+	    
+	function daily_deaths(){
+		choice = "daily deaths";
 		format_points();
 		switch_buttons();
 	}
 	    
 	function tooltip_text(d){
-		tooltip.html(d['County Name'] + " <br> Population: " + d.population + " <br> Cases: " + d[date] + " <br> Deaths: " + d[date + "d"]);
+		tooltip.html(d['County Name'] + " <br> Date: " + " <br> Population: " + d.population + " <br> Cases: " + d[date] + " <br> Deaths: " + d[date + "d"] + " <br> New Cases: " + d[date + "dc"] + + " <br> New Deaths: " + d[date + "dd"]);
 	}
 	    
       async function init(){
 	draw_map();
 	const data = await d3.csv("https://raw.githubusercontent.com/lynn0032/data_vis/master/cases_data.csv");
-	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -540)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".25");
+	window.points = d3.select('svg').append("g").attr("transform", "translate(2000, -540)").selectAll('circle').data(data).enter().append('circle').attr("cx", function(d){return 16*parseFloat(d.pclon10);}).attr("cy",function(d){return 16*(90-parseFloat(d.pclat10));}).style("fill-opacity", ".5");
         format_points();
-	var buttons = ["cases", "deaths", "deathrate"];
+	var buttons = ["cases", "deaths", "daily cases", "daily deaths"];
 	d3.select('svg').selectAll('g').data(buttons).on("click", function(d) {
         if (d == "cases") {cases();} 
 	if (d == "deaths") {deaths();}
-	if (d == "deathrate") {deathrate();}
+	if (d == "daily cases") {daily_cases();}
+	if (d == "daily deaths") {daily_deaths();}
 	});
 	window.tooltip = d3.select("div").attr("class", "tooltip").style("position", "absolute").style("visibility", "hidden").style("background-color", "white").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px");
 	points.on("mouseover", function(d){
@@ -200,7 +220,7 @@
     
     </script>
 	    <p>
-    Meowzers, d3?
+    Meowzers, new data?
   </p>
 	  <p id="value"></p>
   </body>
