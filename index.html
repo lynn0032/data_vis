@@ -251,9 +251,9 @@
 	if (d == "daily deaths") {daily_deaths();}
 	});
 	window.legend = d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("left", "750px").style("top", "400px").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "5px").style("font-family", "Verdana").style("font-size", "11");
-	window.legend_circle = d3.select('svg').append('circle').attr("cx", "760").attr("cy", "480").attr("r", "5");
+	window.legend_circle = d3.select('svg').append('circle').attr("cx", "760").attr("cy", "460").attr("r", "5");
 	update_legend();
-	d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("left", "10px").style("top", "400px").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "5px").style("font-family", "Verdana").style("font-size", "11").html("Mouse over a point to view the case <br>and death numbers for the county.");
+	d3.select("body").append("div").style("position", "absolute").style("visibility", "visible").style("left", "10px").style("top", "420px").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "5px").style("font-family", "Verdana").style("font-size", "11").html("Mouse over a point to view the case <br>and death numbers for the county.");
 	window.tooltip = d3.select("body").append("div").attr("class", "tooltip").style("position", "absolute").style("visibility", "hidden").style("background-color", "white").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "10px");
 	points.on("mouseover", function(d){
 		d3.select(this).style("stroke", "black").style("stroke-opacity", "1");
